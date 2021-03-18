@@ -14,16 +14,20 @@ import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import { NavigationComponent } from './layout/navigation/navigation.component';
+import { PageNotFound } from './layout/page-404/page-404.component';
+
+// Bootstrap
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 
 const routes: Routes = [
-  { path: '/home', component: HomeComponent },
-  { path: '/about', component: AboutComponent },
-  { path: '/courses', component: CoursesComponent },
-  { path: '/contact', component: ContactComponent },
-  { path: '/login', component: LoginComponent },
-  { path: '/dashboard', component: DashboardComponent },
-  { path: '', redirectTo: '/home', pathMatch: 'full' }
-  // { path: '**', component: PageNotFound }
+  { path: 'home', component: HomeComponent },
+  { path: 'about', component: AboutComponent },
+  { path: 'courses', component: CoursesComponent },
+  { path: 'contact', component: ContactComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'dashboard', component: DashboardComponent },
+  // { path: '', redirectTo: 'home', pathMatch: 'full' }
+  { path: '**', component: PageNotFound }
 ]
 
 @NgModule({
@@ -39,11 +43,13 @@ const routes: Routes = [
     HeaderComponent,
     FooterComponent,
     SidebarComponent,
-    NavigationComponent
+    NavigationComponent,
+    PageNotFound
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
-    RouterModule.forRoot(routes, { useHash: true })
+    RouterModule.forRoot(routes, { useHash: true }),
+    CarouselModule.forRoot()
   ],
   exports: [RouterModule],
   providers: [],
