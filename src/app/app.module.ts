@@ -30,7 +30,7 @@ import { NavigationComponent } from './layout/navigation/navigation.component';
     NavigationComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule.withServerTransition({ appId: 'serverApp' })
   ],
   providers: [],
   bootstrap: [AppComponent]
