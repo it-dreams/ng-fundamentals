@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -13,6 +14,17 @@ import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import { NavigationComponent } from './layout/navigation/navigation.component';
+
+const routes: Routes = [
+  { path: '/home', component: HomeComponent },
+  { path: '/about', component: AboutComponent },
+  { path: '/courses', component: CoursesComponent },
+  { path: '/contact', component: ContactComponent },
+  { path: '/login', component: LoginComponent },
+  { path: '/dashboard', component: DashboardComponent },
+  { path: '', redirectTo: '/home', pathMatch: 'full' }
+  // { path: '**', component: PageNotFound }
+]
 
 @NgModule({
   declarations: [
@@ -30,8 +42,10 @@ import { NavigationComponent } from './layout/navigation/navigation.component';
     NavigationComponent
   ],
   imports: [
-    BrowserModule.withServerTransition({ appId: 'serverApp' })
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    RouterModule.forRoot(routes, { useHash: true })
   ],
+  exports: [RouterModule],
   providers: [],
   bootstrap: [AppComponent]
 })
